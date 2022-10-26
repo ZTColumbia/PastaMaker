@@ -18,6 +18,9 @@ with open('tree_structure.json') as f:
 with open('recipe_ingredients.json') as f:
     recipe_ingredients = json.load(f)
 
+with open('questions.json') as f:
+    quiz_data = json.load(f)
+
 @app.route('/')
 def init():
     return flask.redirect(url_for('welcome'))
@@ -117,6 +120,49 @@ def render_branch(id):
                                    allow_quiz=allow_quiz
                                    )
 
+
+############### Quiz ##################
+@app.route("/load_recipe_page", methods=['GET', 'POST'])
+def load_recipe_page():
+    package = request.get_json()
+
+    recipe_id = package['recipe_id']
+    question_id = package['question_id']
+
+    return jsonify(dict(redirect=f'/render_recipe/{recipe_id}'))
+
+@app.route('/recipe/<recipe_id>')
+def render_recipe(recipe_id):
+    global state_tracker
+
+    # update state dict
+    recipe_name = tree_structure[str(recipe_id)]['title']
+    recipe_image = tree_structure[str(recipe_id)]['image']
+    recipe_text = recipe_ingredients[str(recipe_id)]['text']
+
+    ingredient_names = []
+    ingredient_images = []
+
+    for item in recipe_ingredients[str(recipe_id)]['igredients']:
+        ingredient_names.append(tree_structure[str(item)]['title'])
+        ingredient_images.append(tree_structure[str(item)]['image'])
+
+    return render_template('recipe_for_quiz.html',
+                           recipe_name=recipe_name,
+                           recipe_image=recipe_image,
+                           ingredient_names=ingredient_names,
+                           ingredient_images=ingredient_images,
+                           recipe_text=recipe_text,
+                           visited=state_tracker['nodes_visited'],
+                           present=state_tracker['current_node'],
+                           tree_structure=tree_structure
+                           )
+
+s = 0
+c = 0
+question_wise = {}
+# -2 will be updated with the number of "questions" with instructions
+number_of_questions = len(quiz_data) - 2
 
 if __name__ == '__main__':
     app.run()

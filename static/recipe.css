@@ -1,0 +1,201 @@
+.recipe {
+    width: 85%;
+    height: 100%;
+    text-align: center;
+    float: left;
+    flex: 1;
+    margin-left: 200px;
+    background-color: #fbe5b2
+}
+
+.recipe-info {
+    flex: 1;
+    margin-top: 50px;
+    height: 1100px;
+    margin-left: -100px;
+}
+
+.recipe-info-2 {
+    margin-top: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.igredients-col {
+
+    height: 100%;
+    background-color: #de9e2f;
+    width: 20%;
+}
+
+.recipe-col {
+    width: 80%;
+    height: 100px;
+    background-color: lightgray;
+}
+
+.igredients-list {
+    margin-top: 25px;
+}
+
+h2 {
+    margin-top: 100px;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+
+.recipe-description {
+    margin-top: 50px;
+    align-text: left;
+    width: 1200px;
+}
+
+
+.recipe-image {
+    margin-top: 550px;
+}
+
+.column {
+}
+
+.left, .right {
+    width: 25%;
+}
+
+.middle {
+    width: 50%;
+}
+
+.go-back-button-div {
+    margin-top: 20px;
+}
+
+.go-back-button {
+    display: inline-block;
+    padding: 0.46em 1.6em;
+    border: 0.1em solid #000000;
+    margin: 0 0.2em 0.2em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #000000;
+    text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+    background-color: #FFFFFF;
+    text-align: center;
+    transition: all 0.15s;
+    background-color: #42cc8c;
+    height: 80px;
+    width: 200px;
+}
+
+
+.recipe-header {
+    margin-top: 25px;
+    align-text: left;
+
+}
+
+h3 {
+    font-size: 110px;
+
+}
+
+button {
+    margin-top: 20px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    margin-left: -10px;
+}
+
+button.learn-more {
+    width: 13rem;
+    height: auto;
+}
+
+button.learn-more .circle {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: relative;
+    display: block;
+    margin: 0;
+    width: 4rem;
+    height: 4.8rem;
+    background: #282936;
+    border-radius: 1.625rem;
+}
+
+button.learn-more .circle .icon {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: #fff;
+}
+
+button.learn-more .circle .icon.arrow {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    left: 0.625rem;
+    width: 1.125rem;
+    height: 0.125rem;
+    background: none;
+}
+
+button.learn-more .circle .icon.arrow::before {
+    position: absolute;
+    content: "";
+    top: -0.29rem;
+    right: 0.0625rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-top: 0.125rem solid #fff;
+    border-right: 0.125rem solid #fff;
+    transform: rotate(45deg);
+}
+
+button.learn-more .button-text {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.75rem 0;
+    margin: -0.3rem 1.5rem 2rem 2.85rem;
+    color: #282936;
+    font-weight: 700;
+    line-height: 1.6;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-left: 2.8rem
+
+}
+
+button:hover .circle {
+    width: 100%;
+}
+
+button:hover .circle .icon.arrow {
+    background: #fff;
+    transform: translate(1rem, 0);
+}
+
+button:hover .button-text {
+    color: #fff;
+}
+

@@ -4,12 +4,12 @@ function fillIngredients(obj, idx) {
 		return "";
 	}
 	str = "";
-	str += fillIngredients(obj, tree_structure[idx].parent_id);
+	str += fillIngredients(obj, tree[idx].parent_id);
 	str +=
 		"<img src = '../static/images/" +
-		tree_structure[idx].image +
+		tree[idx].image +
 		"' width = '80px' height = '80px'> <br>" +
-		tree_structure[idx].title +
+		tree[idx].title +
 		"<hr>";
 	return str;
 }

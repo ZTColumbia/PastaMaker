@@ -6,7 +6,7 @@
 
     <script>
         let parent = {{parent|tojson}};
-        let child_1 = {{child_1|tojson}};
+        let child_middle = {{child_middle|tojson}};
         let size = 1000;
     </script>
     <div class="branch">
@@ -33,14 +33,14 @@
         {#    for child node, the middle one - child 2 with arrow 2   #}
         <div class="tree-node">
             <div class='tree_node_button'>
-                <button id="child-button-2" class='child-button' name="{{ child_1['node_id'] }}"
-                        onclick=" renderChild(event, {{ child_1['node_id'] }})">
+                <button id="child-button-2" class='child-button' name="{{ child_middle['node_id'] }}"
+                        onclick=" renderChild(event, {{ child_middle['node_id'] }})">
                     <div class="child-node-div">
                         <div class="child-node-text">
-                            {{ child_1['title'] }}
+                            {{ child_middle['title'] }}
                         </div>
                         <div class="child-node-image">
-                            <image src="{{ url_for('static', filename='images/'+ child_1['image']) }}"
+                            <image src="{{ url_for('static', filename='images/'+ child_middle['image']) }}"
                                    alt="olive oil" height="180" width="220"></image>
                         </div>
                     </div>

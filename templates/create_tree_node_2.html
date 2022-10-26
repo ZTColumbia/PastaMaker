@@ -7,8 +7,8 @@
 
     <script>
         let parent = {{parent|tojson}};
-        let child_1 = {{child_1|tojson}};
-        let child_2 = {{child_2|tojson}};
+        let child_left = {{child_left|tojson}};
+        let child_right = {{child_right|tojson}};
         let size = 1000
     </script>
 
@@ -37,28 +37,28 @@
         {#    for child nodes, the left one and right one, with arrow 1 and arrow 3    #}
         <div class="tree-node">
             <div class='tree_node_button'>
-                <button id="child-button-1" class='child-button' name="{{ child_1['node_id'] }}"
-                        onclick="renderChild(event, {{ child_1['node_id'] }})">
+                <button id="child-button-1" class='child-button' name="{{ child_left['node_id'] }}"
+                        onclick="renderChild(event, {{ child_left['node_id'] }})">
                     <div class="child-node-div">
                         <div class="child-node-text">
-                            {{ child_1['title'] }}
+                            {{ child_left['title'] }}
                         </div>
                         <div class="child-node-image">
-                            <image src="{{ url_for('static', filename='images/'+ child_1['image']) }}"
+                            <image src="{{ url_for('static', filename='images/'+ child_left['image']) }}"
                                    alt="olive oil" height="180" width="220"></image>
                         </div>
                     </div>
                 </button>
             </div>
             <div class='tree_node_button'>
-                <button id="child-button-3" class='child-button' name="{{ child_2['node_id'] }}"
-                        onclick="renderChild(event, {{ child_2['node_id'] }})">
+                <button id="child-button-3" class='child-button' name="{{ child_right['node_id'] }}"
+                        onclick="renderChild(event, {{ child_right['node_id'] }})">
                     <div class="child-node-div">
                         <div class="child-node-text">
-                            {{ child_2['title'] }}
+                            {{ child_right['title'] }}
                         </div>
                         <div class="child-node-image">
-                            <image src="{{ url_for('static', filename='images/'+ child_2['image']) }}"
+                            <image src="{{ url_for('static', filename='images/'+ child_right['image']) }}"
                                    alt="olive oil" height="180" width="220"></image>
                         </div>
                     </div>

@@ -6,22 +6,15 @@ from functools import wraps, update_wrapper
 from flask import make_response
 from datetime import datetime
 
-
-
 app = Flask(__name__)
 
 
-# global variables
-state_tracker = {
-    "nodes_visited": [],
-    "current_node": 0
-}
 
-with open('tree_structure.json') as f:
-    tree_structure = json.load(f)
+with open('tree.json') as f:
+    tree = json.load(f)
 
-with open('recipe_ingredients.json') as f:
-    recipe_ingredients = json.load(f)
+with open('recipe.json') as f:
+    recipe = json.load(f)
 
 with open('questions.json') as f:
     quiz_data = json.load(f)
@@ -38,34 +31,43 @@ def homepage():
 def init_tree():
     data = request.get_json()
     id = data['id']
-    return jsonify(dict(redirect=f'/populate_tree_branch/{id}'))
+    return jsonify(dict(redirect=f'/create_tree_node/{id}'))
 
-@app.route('/populate_tree_branch/<id>')
-def populate_tree_branch(id):
+
+# global variables
+state_tracker = {
+    "nodes_visited": [],
+    "current_node": 0
+}
+
+@app.route('/create_tree_node/<id>')
+def create_tree_node(id):
     global state_tracker
 
     if id not in state_tracker['nodes_visited']:
         state_tracker['nodes_visited'].append(id)
 
     state_tracker['current_node'] = id
-    parent = tree_structure[id]
+    parent = tree[id]
     children = parent['children']
+
     allow_quiz = True
     if len(state_tracker['nodes_visited']) == 26:
         allow_quiz = True
+
     # render leaf node
     if parent['is_recipe']:
 
-        recipe_name = tree_structure[str(id)]['title']
-        recipe_image = tree_structure[str(id)]['image']
-        recipe_text = recipe_ingredients[str(id)]['text']
+        recipe_name = tree[str(id)]['title']
+        recipe_image = tree[str(id)]['image']
+        recipe_text = recipe[str(id)]['text']
 
         ingredient_names = []
         ingredient_images = []
 
-        for item in recipe_ingredients[str(id)]['igredients']:
-            ingredient_names.append(tree_structure[str(item)]['title'])
-            ingredient_images.append(tree_structure[str(item)]['image'])
+        for item in recipe[str(id)]['igredients']:
+            ingredient_names.append(tree[str(item)]['title'])
+            ingredient_images.append(tree[str(item)]['image'])
 
         return render_template('recipe.html',
                                recipe_name=recipe_name,
@@ -76,46 +78,46 @@ def populate_tree_branch(id):
                                parent_id=parent['parent_id'],
                                visited=state_tracker['nodes_visited'],
                                present=state_tracker['current_node'],
-                               tree_structure=tree_structure
+                               tree=tree
                                )
 
     else:
         children_data = []
         for child_id in children:
-            children_data.append(tree_structure[str(child_id)])
+            children_data.append(tree[str(child_id)])
 
         # render new branch
         if len(children) == 1:
-            return render_template('populate_tree_branch_1.html',
+            return render_template('create_tree_node_1.html',
                                    parent=parent,
-                                   child_1=children_data[0],
+                                   child_middle=children_data[0],
                                    visited=state_tracker['nodes_visited'],
                                    present=state_tracker['current_node'],
-                                   tree_structure=tree_structure,
+                                   tree=tree,
                                    allow_quiz=allow_quiz
                                    )
 
         elif len(children) == 2:
-            return render_template('populate_tree_branch_2.html',
+            return render_template('create_tree_node_2.html',
                                    parent=parent,
-                                   child_1=children_data[0],
-                                   child_2=children_data[1],
+                                   child_left=children_data[0],
+                                   child_right=children_data[1],
                                    visited=state_tracker['nodes_visited'],
                                    present=state_tracker['current_node'],
-                                   tree_structure=tree_structure,
+                                   tree=tree,
                                    allow_quiz=allow_quiz
 
                                    )
 
         elif len(children) == 3:
-            return render_template('populate_tree_branch_3.html',
+            return render_template('create_tree_node_3.html',
                                    parent=parent,
-                                   child_1=children_data[0],
-                                   child_2=children_data[1],
-                                   child_3=children_data[2],
+                                   child_left=children_data[0],
+                                   child_middle=children_data[1],
+                                   child_right=children_data[2],
                                    visited=state_tracker['nodes_visited'],
                                    present=state_tracker['current_node'],
-                                   tree_structure=tree_structure,
+                                   tree=tree,
                                    allow_quiz=allow_quiz
                                    )
 
@@ -135,16 +137,16 @@ def render_recipe(recipe_id):
     global state_tracker
 
     # update state dict
-    recipe_name = tree_structure[str(recipe_id)]['title']
-    recipe_image = tree_structure[str(recipe_id)]['image']
-    recipe_text = recipe_ingredients[str(recipe_id)]['text']
+    recipe_name = tree[str(recipe_id)]['title']
+    recipe_image = tree[str(recipe_id)]['image']
+    recipe_text = recipe[str(recipe_id)]['text']
 
     ingredient_names = []
     ingredient_images = []
 
-    for item in recipe_ingredients[str(recipe_id)]['igredients']:
-        ingredient_names.append(tree_structure[str(item)]['title'])
-        ingredient_images.append(tree_structure[str(item)]['image'])
+    for item in recipe[str(recipe_id)]['igredients']:
+        ingredient_names.append(tree[str(item)]['title'])
+        ingredient_images.append(tree[str(item)]['image'])
 
     return render_template('recipe_for_quiz.html',
                            recipe_name=recipe_name,
@@ -154,7 +156,7 @@ def render_recipe(recipe_id):
                            recipe_text=recipe_text,
                            visited=state_tracker['nodes_visited'],
                            present=state_tracker['current_node'],
-                           tree_structure=tree_structure
+                           tree=tree
                            )
 
 s = 0

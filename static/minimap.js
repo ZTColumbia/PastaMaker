@@ -1,8 +1,8 @@
-function getNodeHTML(idx, visited, present, tree_structure) {
+function getNodeHTML(idx, visited, present, tree) {
     //console.log(0)
 
 
-    if (Object.keys(tree_structure).length - 1 < idx) return ""
+    if (Object.keys(tree).length - 1 < idx) return ""
     //console.log(visited)
     if (idx == present || visited.includes(idx.toString())) {
 
@@ -14,29 +14,29 @@ function getNodeHTML(idx, visited, present, tree_structure) {
             HTML_str = "<li> <span class = 'green'  id =" + idx + '>'
         }
 
-        HTML_str += "<button class='minimap-node-button' onclick = 'renderNode(" + idx.toString() + ")'><img src = '../static/images/" + tree_structure[idx].image + "' width = '15' height='15'></button>"
+        HTML_str += "<button class='minimap-node-button' onclick = 'renderNode(" + idx.toString() + ")'><img src = '../static/images/" + tree[idx].image + "' width = '15' height='15'></button>"
 
     }
     else {
         HTML_str = "<li> <span class = 'red'  id =" + idx + '>'
-        HTML_str += "<button class='minimap-node-button-not-visited'><img src = '../static/images/" + tree_structure[idx].image + "' width = '15' height='15'></button>"
+        HTML_str += "<button class='minimap-node-button-not-visited'><img src = '../static/images/" + tree[idx].image + "' width = '15' height='15'></button>"
     }
 
 
     HTML_str += "</span>"
 
-    console.log(tree_structure[idx])
+    console.log(tree[idx])
 
     console.log('----------')
-    console.log(tree_structure[idx].children)
-    console.log(tree_structure[idx].children)
+    console.log(tree[idx].children)
+    console.log(tree[idx].children)
     console.log('----------')
 
-    if (tree_structure[idx].children !== null) {
+    if (tree[idx].children !== null) {
         HTML_str += "<ul>"
-        for (var i = 0; i < tree_structure[idx].children.length; i++) {
+        for (var i = 0; i < tree[idx].children.length; i++) {
             console.log('test')
-            HTML_str += getNodeHTML(tree_structure[idx].children[i], visited, present, tree_structure)
+            HTML_str += getNodeHTML(tree[idx].children[i], visited, present, tree)
         }
         HTML_str += "</ul>"
     }
@@ -48,11 +48,11 @@ function getNodeHTML(idx, visited, present, tree_structure) {
     return HTML_str
 }
 
-function getNodeHTMLExpand(idx, visited, present, tree_structure) {
+function getNodeHTMLExpand(idx, visited, present, tree) {
     //console.log(0)
 
 
-    if (Object.keys(tree_structure).length - 1 < idx) return ""
+    if (Object.keys(tree).length - 1 < idx) return ""
     //console.log(visited)
     if (idx == present || visited.includes(idx.toString())) {
 
@@ -64,29 +64,29 @@ function getNodeHTMLExpand(idx, visited, present, tree_structure) {
             HTML_str = "<li> <span class = 'green'  id =" + idx + '>'
         }
 
-        HTML_str += ""+tree_structure[idx].title+"<br><button class='minimap-node-button' onclick = 'renderNode(" + idx.toString() + ")'><img src = '../static/images/" + tree_structure[idx].image + "' width = '35px' height='35px'></button>"
+        HTML_str += ""+tree[idx].title+"<br><button class='minimap-node-button' onclick = 'renderNode(" + idx.toString() + ")'><img src = '../static/images/" + tree[idx].image + "' width = '35px' height='35px'></button>"
 
     }
     else {
         HTML_str = "<li> <span class = 'red'  id =" + idx + '>'
-        HTML_str += ""+tree_structure[idx].title+"<br><img src = '../static/images/" + tree_structure[idx].image + "' width = '35px' height='35px'>"
+        HTML_str += ""+tree[idx].title+"<br><img src = '../static/images/" + tree[idx].image + "' width = '35px' height='35px'>"
     }
 
 
     HTML_str += "</span>"
 
-    console.log(tree_structure[idx])
+    console.log(tree[idx])
 
     console.log('----------')
-    console.log(tree_structure[idx].children)
-    console.log(tree_structure[idx].children)
+    console.log(tree[idx].children)
+    console.log(tree[idx].children)
     console.log('----------')
 
-    if (tree_structure[idx].children !== null) {
+    if (tree[idx].children !== null) {
         HTML_str += "<ul>"
-        for (var i = 0; i < tree_structure[idx].children.length; i++) {
+        for (var i = 0; i < tree[idx].children.length; i++) {
             console.log('test')
-            HTML_str += getNodeHTMLExpand(tree_structure[idx].children[i], visited, present, tree_structure)
+            HTML_str += getNodeHTMLExpand(tree[idx].children[i], visited, present, tree)
         }
         HTML_str += "</ul>"
     }
@@ -99,9 +99,9 @@ function getNodeHTMLExpand(idx, visited, present, tree_structure) {
 }
 
 
-function displayChart(visited, present, tree_structure, obj) {
+function displayChart(visited, present, tree, obj) {
     obj.empty()
-    obj.append("<ul class = 'tree'>" + getNodeHTML(0, visited, present, tree_structure) + "</ul>")
+    obj.append("<ul class = 'tree'>" + getNodeHTML(0, visited, present, tree) + "</ul>")
 };
 
 
@@ -144,7 +144,7 @@ function renderNode(id) {
 function expandMiniMap() {
     obj = $("#minimapDialog")
     obj.empty()
-    obj.append("<ul class = 'treeExpand'>" + getNodeHTMLExpand(0, visited, present, tree_structure) + "</ul>")
+    obj.append("<ul class = 'treeExpand'>" + getNodeHTMLExpand(0, visited, present, tree) + "</ul>")
     $('#expandMiniMapDialog').dialog("open");
 }
 $(document).ready(function () {
@@ -156,5 +156,5 @@ $(document).ready(function () {
         width: 'auto',
         modal: true
     });
-    displayChart(visited, present, tree_structure, $("#minimap"))
+    displayChart(visited, present, tree, $("#minimap"))
 });

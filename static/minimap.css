@@ -1,0 +1,212 @@
+
+/*
+
+    Dark Yellow : #de9e2f
+    Light Yellow : #fbe5b2
+
+    Dark Gray : darkgray
+    Light Gray : #e8e6e0
+
+
+*/
+
+
+.tree,
+.tree ul,
+.tree li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    background-color : #fbe5b2;
+    width : 40px;
+
+}
+
+.tree{
+    border:25px solid darkgray;
+    border-style: outset;
+
+}
+
+
+
+#minimap{
+
+    height : 500px;
+    margin-top : 50px;
+
+
+}
+
+.minimap-node-button:hover{
+    background: orange;
+     cursor: pointer;
+}
+.minimap-node-button{
+    padding: 0px;
+    line-height: 0;
+}
+.minimap-node-button-not-visited{
+    padding: 0;
+    line-height: 0;
+}
+
+
+.tree,
+.tree ul {
+    display: table;
+
+}
+.tree ul {
+}
+.tree li {
+    display: table-cell;
+    padding: .5em 0;
+    vertical-align: top;
+}
+.green{
+    background-color: #7CFC00;
+}
+.yellow{
+    background-color: orange;
+}
+.red{
+    background-color: #282936;
+    color : white;
+}
+.tree li:before {
+    outline: solid 1px black;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.tree li:first-child:before {
+    left: 50%;
+}
+.tree li:last-child:before {
+    right: 50%;
+}
+.tree code,
+.tree span {
+    border: solid .1em black;
+    border-radius: .2em;
+    display: inline-block;
+    margin: 0 .2em .5em;
+    padding: .2em .5em;
+    position: relative;
+}
+.tree ul:before,
+.tree code:before,
+.tree span:before {
+    outline: solid 1px black;
+    content: "";
+    height: .5em;
+    left: 50%;
+    position: absolute;
+}
+.tree ul:before {
+    top: -.5em;
+}
+.tree code:before,
+.tree span:before {
+    top: -.55em;
+}
+.tree>li {
+    margin-top: 0;
+}
+.tree>li:before,
+.tree>li:after,
+.tree>li>code:before,
+.tree>li>span:before {
+    outline: none;
+}
+
+
+.treeExpand,
+.treeExpand ul,
+.treeExpand li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+.treeExpand {
+    margin: 0 0 1em;
+    text-align: center;
+}
+.treeExpand,
+.treeExpand ul {
+    display: table;
+}
+.treeExpand ul {
+    width: 100%;
+}
+.treeExpand li {
+    display: table-cell;
+    padding: .5em 0;
+    vertical-align: top;
+}
+.treeExpand li:before {
+    outline: solid 1px #666;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.treeExpand li:first-child:before {
+    left: 50%;
+}
+.treeExpand li:last-child:before {
+    right: 50%;
+}
+.treeExpand code,
+.treeExpand span {
+    border: solid .1em #666;
+    border-radius: .2em;
+    display: inline-block;
+    margin: 0 .2em .5em;
+    padding: .2em .5em;
+    position: relative;
+}
+.treeExpand ul:before,
+.treeExpand code:before,
+.treeExpand span:before {
+    outline: solid 1px #666;
+    content: "";
+    height: .5em;
+    left: 50%;
+    position: absolute;
+}
+.treeExpand ul:before {
+    top: -.5em;
+}
+.treeExpand code:before,
+.treeExpand span:before {
+    top: -.55em;
+}
+.treeExpand>li {
+    margin-top: 0;
+}
+.treeExpand>li:before,
+.treeExpand>li:after,
+.treeExpand>li>code:before,
+.treeExpand>li>span:before {
+    outline: none;
+}
+
+.ui-draggable .ui-dialog-titlebar {
+    cursor: move;
+    background-color: #de9e2f;
+}
+.ui-dialog .ui-dialog-content {
+    position: relative;
+    border: 4px solid #de9e2f;;
+    padding: 0.5em 1em;
+    background: none;
+    overflow: auto;
+    background-color: #fbe5b2;
+}

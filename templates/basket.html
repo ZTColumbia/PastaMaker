@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="data:,">
+	
+	<!-- jquery -->
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	<script type="text/javascript" src="{{ url_for('static', filename = 'basket.js') }}"></script>
+	<script>
+        var present = {{present|tojson}};
+        var tree_structure = {{tree_structure|tojson}}
+        console.log(id)
+    
+	</script>
+	
+	<title>Basket</title>
+</head>
+<body>
+
+
+<div class="basket" id="basket">
+	<button name="basketButton" onclick="fillBasket()">
+		
+		<image src="{{url_for('static', filename='images/basket.jpeg')}}"
+		       alt="olive oil" height="100%" width="100%">
+	
+	</button>
+</div>
+<dialog id="ingredientsDialog">
+	<p> Here are yor ingredients:</p>
+	<div id="ingredients">
+	
+	</div>
+</dialog>
+
+
+{% block content %}
+
+{% endblock %}
+
+</div>
+</div>
+</body>
+</html>
+
+
+
+

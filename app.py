@@ -1,7 +1,12 @@
 import flask
 import json
 
-from flask import Flask, url_for, render_template, request, jsonify
+from flask import Flask, url_for, render_template, request, jsonify, redirect
+from functools import wraps, update_wrapper
+from flask import make_response
+from datetime import datetime
+
+
 
 app = Flask(__name__)
 
@@ -23,7 +28,7 @@ with open('questions.json') as f:
 
 @app.route('/')
 def init():
-    return flask.redirect(url_for('welcome'))
+    return redirect(url_for('welcome'))
 
 
 @app.route('/welcome')
@@ -157,6 +162,43 @@ def render_recipe(recipe_id):
                            present=state_tracker['current_node'],
                            tree_structure=tree_structure
                            )
+
+s = 0
+c = 0
+question_wise = {}
+# -2 will be updated with the number of "questions" with instructions
+number_of_questions = len(quiz_data) - 2
+
+def nocache(view):
+    @wraps(view)
+    def no_cache(*args, **kwargs):
+        response = make_response(view(*args, **kwargs))
+        response.headers['Last-Modified'] = datetime.now()
+        response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0'
+        response.headers['Pragma'] = 'no-cache'
+        response.headers['Expires'] = '-1'
+        return response
+    return update_wrapper(no_cache, view)
+
+@app.route("/goto_quiz_home", methods=['GET', 'POST'])
+def goto_quiz_home():
+    return jsonify(dict(redirect=f'/quiz_home'))
+
+@app.route('/quiz_home')
+@nocache
+def main():
+    global c
+    global question_wise
+    global quiz_data
+    # reset the selections when quiz is done
+    for i in range(1, len(quiz_data)):
+        if "selected" in quiz_data[str(i)]:
+            quiz_data[str(i)]["selected"] = -1
+    question_wise = {}
+    if c == 0:
+        return render_template('quiz_home.html', data=quiz_data)
+    else:
+        return redirect("/question/0")
 
 
 if __name__ == '__main__':

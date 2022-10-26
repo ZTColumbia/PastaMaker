@@ -1,0 +1,138 @@
+.theme_css{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    background-color: #fbe5b2;
+}
+
+#description{
+    color: darkgray;
+    font-size: 26px;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 280px;
+    margin-left: 500px;
+    margin-bottom: 100px;
+}
+
+/* #start_button {
+    margin-left: 40px;
+    font-size: 20px;
+    background-color: #de9e2f;
+    color: white;
+    width: 200px;
+    height: 60px;
+    border-radius: 3%;
+    border-color: darkgray;
+} */
+
+#back_learn_button {
+    margin-left: 520px;
+    font-size: 20px;
+    background-color: #de9e2f;
+    color: white;
+    width: 200px;
+    height: 60px;
+    border-radius: 3%;
+    border-color: darkgray;
+}
+
+#theme-image{
+    margin-top: 130px;
+    margin-left: 120px;
+    margin-bottom: 20px;
+    border: 5px;
+    border-color: black;
+    width: 550px;
+    border-radius: 50%;
+}
+
+.round_img {
+    width: 650px;
+    border-radius: 55%;
+    outline: 15px solid #de9e2f;
+    outline-offset: -12px;
+}
+
+.theme_background_image{
+    position: absolute;
+    color:white;
+    width: 100vw;
+    height: 85%;
+    margin-bottom: 200px;
+}
+
+#theme-title{
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 250px;
+    margin-left: 400px;
+}
+
+#theme-description{
+    display: inline-block;
+    color: rgb(112, 112, 112);
+    font-size: 28px;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 15%;
+    margin-left: 400px;
+    margin-bottom: 100px;
+}
+
+#start_button {
+    font-size: 28px;
+    background-color: #de9e2f;
+    color: white;
+    width: 160px;
+    height: 60px;
+    border-radius: 3%;
+    border-width: 2px;
+    border-color: black;
+    margin-top: 45%;
+    position: absolute;
+    left: 46%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#start_button:hover{
+    text-decoration:underline;
+}
+
+#lesson_button {
+    font-size: 26px;
+    background-color: #de9e2f;
+    color: white;
+    width: 200px;
+    height: 60px;
+    border-radius: 3%;
+    border-color: black;
+    border-width: 2px;
+    margin-top: 45%;
+    position: absolute;
+    left: 75%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#lesson_button:hover{
+    text-decoration:underline;
+    color: black;
+}
+
+.learn{
+    padding-top: 1100px;
+}
+
+.quiztitle {
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    padding-top: 40px;
+}

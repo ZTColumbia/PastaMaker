@@ -238,6 +238,16 @@ def question(id=0):
         n_questions=number_of_questions,
         total=len(quiz_data))
 
+@app.route('/question/update_score', methods=['GET', 'POST'])
+def update_score():
+    global s
+    num = request.get_json()
+    s += float(num["correct"])
+    if num["id"] not in question_wise:
+        question_wise[num["id"]] = float(num["correct"])
+    print(question_wise)
+    return jsonify(url="/quiz_home")
+
 
 if __name__ == '__main__':
     app.run()

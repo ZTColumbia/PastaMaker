@@ -1,0 +1,174 @@
+.viewtitle {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 32px;
+    padding-top: 40px;
+}
+
+.viewquestion {
+    display: inline-block;
+    font-size: 20px;
+    padding-top: 20px;
+    font-size: 23px;
+}
+
+.answer_items{
+    margin-bottom: 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.instruction_items{
+    margin-bottom: 15px;
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.drop_text_items{
+    display: inline-block;
+    width:200px; 
+    height: 110px;
+    border-bottom: 1px solid #000000;
+}
+
+.instruction_items_with_answers{
+    margin-bottom: 25px;
+    margin-left: 20px;;
+}
+
+.instruction_answer {
+    display: inline-block;
+    width:200px; 
+    border-bottom: 1px solid #000000;
+    text-align: center;
+    font-weight: bold;
+}
+
+.caption_1{
+    text-align: center;
+}
+
+.caption_correct{
+    text-align: center;
+    color: mediumseagreen;
+    font-weight: bold;
+}
+
+.caption_wrong{
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
+
+.bottombutton {
+    display: block;
+    position: relative;
+    margin-top: 20px;
+    margin-left: 95%;
+    font-size: 24px;
+}
+
+.resetbutton {
+    display: block;
+    font-size: 22px;
+    padding-top: 20px;
+    margin-left: 60px;
+}
+
+#rst_button:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.submitbutton {
+    display: block;
+    font-size: 22px;
+    padding-top: 20px;
+    margin-left: 10px;
+}
+
+#sbt_button:hover:enabled{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.disabled_grey {
+    background-color: #e8e6e0;
+    color: darkgray;
+}
+
+.enabled_yellow {
+    background-color: #de9e2f;
+    color: white;
+}
+
+.enabled_light_yellow {
+    background-color: #fbe5b2;
+    color: black;
+}
+
+.recipebutton {
+    display: block;
+    position: relative;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.answersbutton {
+    display: block;
+    position: relative;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.hover{
+    background-color: #fbe5b2;
+    cursor: all-scroll;
+}
+
+.hover_new{
+    background-color: blue;
+    cursor: all-scroll;
+}
+
+.hover-active{
+    background-color: #fbe5b2;
+}
+
+#progress {
+    display: inline-block;
+    position: relative;
+}
+
+#progressbar {
+    display: inline-block;
+    position: relative;
+    text-align: center; /* To center it horizontally (if you want) */
+    color: white;
+    width: 100%;
+    height: 50px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border: 0px;
+}
+
+.progress-label {
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    font-weight: bold;
+    font-size: 22px;
+  }
+
+  .ui-progressbar {
+    background: #fbe5b2;
+  }
+
+  .ui-progressbar-value {
+    background: #de9e2f;
+  }
+
+.next_button {
+    font-size: 28px;
+}

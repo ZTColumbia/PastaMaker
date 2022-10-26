@@ -1,0 +1,220 @@
+.viewtitle {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 32px;
+    padding-top: 40px;
+}
+
+.image{
+    padding-top: 5px;
+    margin-top: 20px;
+    background-color: rgb(237, 237, 237);
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.image3ing {
+    padding-top: 5px;
+    margin-top: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: rgb(237, 237, 237);
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.viewoptions {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 26px;
+    padding-top: 20px;
+}
+
+.wrong {
+    color: red;
+    padding-left: 2%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.correct {
+    color: mediumseagreen;
+    padding-left: 2%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.operators {
+    margin-top: 40px;
+    padding-left: 30px;
+    padding-top: 60px;
+    text-align: left;
+    font-size: 48px;
+    vertical-align: center;
+}
+
+.operators3 {
+    margin-top: 5px;
+    padding-left: 30px;
+    padding-top: 60px;
+    text-align: left;
+    font-size: 48px;
+    vertical-align: center;
+}
+
+.highlight {
+    cursor: all-scroll;
+    background-color: #fbe5b2;
+}
+
+.wronghighlight {
+    cursor: all-scroll;
+    background-color: rgb(224, 180, 180);
+}
+
+.correcthighlight {
+    cursor: all-scroll;
+    background-color: rgb(181, 238, 181);
+}
+
+.caption_0 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.caption_1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.ui-widget-content {
+    border: 0px;
+}
+
+.mybutton {
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.bottombutton {
+    display: block;
+    position: relative;
+    margin-top: 4%;
+    margin-left: 95%;
+    font-size: 28px;
+}
+
+.enabled_yellow {
+    background-color: #de9e2f;
+    color: white;
+}
+
+.hometitle {
+    text-align: center;
+    font-size: 30px;
+    padding-top: 40px;
+}
+
+.homeheader {
+    text-align: center;
+    font-weight: bold;
+    font-size: 34px;
+    padding-top: 10px;
+}
+
+.centered {
+    margin: auto;
+    text-align: center;
+    display: block;
+    padding: 10px;
+    width: 30%;
+    font-size: 28px;
+}
+
+.centered2 {
+    text-align: center;
+    display: block;
+    padding-bottom: 15px;
+    font-size: 30px;
+}
+
+#progress {
+display: inline-block;
+position: relative;
+}
+
+#progressbar {
+    display: inline-block;
+    position: relative;
+    text-align: center; /* To center it horizontally (if you want) */
+    color: black;
+    width: 100%;
+    height: 50px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border: 0px;
+}
+
+.progress-label {
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.ui-progressbar {
+    background: #fbe5b2;
+}
+
+.ui-progressbar-value {
+    background: #de9e2f;
+}
+
+.theme_css{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    background-color: #fbe5b2;
+}
+
+.endbuttonleft {
+    margin-left: 65%;
+    display: block;
+    font-size: 32px;
+    background-color: #de9e2f;
+    color: white;
+    width: 240px;
+    height: 60px;
+    border-radius: 3%;
+    border-width: 3px;
+    border-color: black;
+}
+
+.endbuttonright {
+    margin-left: 15%;
+    display: block;
+    font-size: 32px;
+    background-color: #de9e2f;
+    color: white;
+    width: 240px;
+    height: 60px;
+    border-radius: 3%;
+    border-width: 3px;
+    border-color: black;
+}
+
+#viewbtn:hover:enabled{
+    text-decoration:underline;
+    cursor: pointer;
+}
+
+#recipebutton:hover:enabled{
+    text-decoration:underline;
+    cursor: pointer;
+}

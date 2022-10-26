@@ -248,6 +248,14 @@ def update_score():
     print(question_wise)
     return jsonify(url="/quiz_home")
 
+@app.route('/question/store_answer', methods=['GET', 'POST'])
+def store_answer():
+    global quiz_data
+    item = request.get_json()
+    question_id = str(item["id"])
+    quiz_data[question_id] = item
+    return jsonify(url="/quiz_home")
+
 
 if __name__ == '__main__':
     app.run()

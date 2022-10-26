@@ -1,0 +1,39 @@
+{% extends 'quiz_layout.html' %}
+
+{% block head %}
+
+{{ super() }}
+
+<link rel="stylesheet" href="{{url_for('static', filename='quiz_home.css')}}">
+<script type="text/javascript" src="{{ url_for('static', filename = 'tree_parser.js') }}"></script>
+
+
+<script>
+    let data = {{data|tojson}};
+</script>
+
+{% endblock head %}
+
+{% block content %}
+    
+{{ super() }}
+
+<div class="container-fluid theme_css">
+    <div class="col-12 quiztitle">Quiz</div>
+    <div class="row">
+        <div class="col-md-6">
+            <div id="theme-description">Think you have become a pasta expert? 
+                <br> It's time to quiz yourself!
+                <br> <br> The quiz consists of two parts with a<br> 
+                total of 8 questions.
+            </div>
+            <button type='button' id='start_button' class='start_button'><a style='text-decoration:none; color:white;' href="/question/0">Start Quiz</a></button>
+            <button type='button' id='lesson_button' class='start_button' onclick="initTree(event)"><a style='text-decoration:none; color:white;' href="/">Back to Lesson</a></button>
+        </div>
+        <div class="col-md-6">
+            <div id="theme-image"><img src="https://i2.wp.com/chilipeppermadness.com/wp-content/uploads/2021/07/Bucatini-all-Amatriciana-SQ.jpg" alt='Pasta' class='round_img'></div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -36,26 +36,26 @@ def init_tree():
 
 # global variables
 nodes_info = {
-    "nodes_visited": [],
-    "current_node": 0
+    "visited": [],
+    "cur": 0
 }
 
 @app.route('/create_tree_node/<id>')
 def create_tree_node(id):
     global nodes_info
 
-    if id not in nodes_info['nodes_visited']:
-        nodes_info['nodes_visited'].append(id)
+    if id not in nodes_info['visited']:
+        nodes_info['visited'].append(id)
 
-    nodes_info['current_node'] = id
+    nodes_info['cur'] = id
     parent = tree[id]
     children = parent['children']
 
     allow_quiz = False
-    if len(nodes_info['nodes_visited']) == 26:
+    if len(nodes_info['visited']) == 26:
         allow_quiz = True
 
-    # render leaf node
+    # is leaf node
     if parent['is_recipe']:
 
         recipe_name = tree[str(id)]['title']
@@ -76,8 +76,8 @@ def create_tree_node(id):
                                ingredient_images=ingredient_images,
                                recipe_text=recipe_text,
                                parent_id=parent['parent_id'],
-                               visited=nodes_info['nodes_visited'],
-                               present=nodes_info['current_node'],
+                               visited=nodes_info['visited'],
+                               present=nodes_info['cur'],
                                tree=tree
                                )
 
@@ -87,39 +87,22 @@ def create_tree_node(id):
             children_data.append(tree[str(child_id)])
 
         # render new branch
-
+        tmp = "create_tree_node_"
         if len(children) == 1:
-            return render_template('create_tree_node_1.html',
-                                   parent=parent,
-                                   child_middle=children_data[0],
-                                   visited=nodes_info['nodes_visited'],
-                                   present=nodes_info['current_node'],
-                                   tree=tree,
-                                   allow_quiz=allow_quiz
-                                   )
+            tmp = tmp + "1.html"
+        if len(children) == 2:
+            tmp = tmp + "2.html"
+        if len(children) == 3:
+            tmp = tmp + "3.html"
 
-        elif len(children) == 2:
-            return render_template('create_tree_node_2.html',
-                                   parent=parent,
-                                   child_left=children_data[0],
-                                   child_right=children_data[1],
-                                   visited=nodes_info['nodes_visited'],
-                                   present=nodes_info['current_node'],
-                                   tree=tree,
-                                   allow_quiz=allow_quiz
-                                   )
-
-        elif len(children) == 3:
-            return render_template('create_tree_node_3.html',
-                                   parent=parent,
-                                   child_left=children_data[0],
-                                   child_middle=children_data[1],
-                                   child_right=children_data[2],
-                                   visited=nodes_info['nodes_visited'],
-                                   present=nodes_info['current_node'],
-                                   tree=tree,
-                                   allow_quiz=allow_quiz
-                                   )
+        return render_template(tmp,
+                   parent=parent,
+                   children=children_data,
+                   visited=nodes_info['visited'],
+                   present=nodes_info['cur'],
+                   tree=tree,
+                   allow_quiz=allow_quiz
+                   )
 
 
 ############### Quiz ##################
@@ -154,8 +137,8 @@ def render_recipe(recipe_id):
                            ingredient_names=ingredient_names,
                            ingredient_images=ingredient_images,
                            recipe_text=recipe_text,
-                           visited=nodes_info['nodes_visited'],
-                           present=nodes_info['current_node'],
+                           visited=nodes_info['visited'],
+                           present=nodes_info['cur'],
                            tree=tree
                            )
 

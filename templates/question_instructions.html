@@ -1,0 +1,43 @@
+{% extends 'quiz_layout.html' %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename = 'question_instructions.js') }}"></script>
+<link rel="stylesheet" href="{{url_for('static', filename='question_instructions.css')}}">
+<script>
+    let item = {{item|tojson}};
+    let total = {{total|tojson}};
+    let n_questions={{n_questions|tojson}};
+</script>
+{% endblock head %}
+{% block content %}
+{{ super() }}
+<div id="quizhead" class="quizheader">Quiz</div>
+<div class="row">
+    <div id="title" class="viewtitle"></div>
+</div>
+<div class="row">
+    <div id="howtocomplete" class="viewhowtocomplete"></div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div id="instructions" class="viewinstructions"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div id="tutorial"></div>
+    </div>
+</div>
+
+<br>
+
+<div class="row fullgif">
+    <div id="gif" class="viewgif"></div>
+</div>
+
+<div class="row">
+    <div id="nextq" class="col-4 bottombutton"></div>
+</div>
+
+
+{% endblock content %}

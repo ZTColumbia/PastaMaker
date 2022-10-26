@@ -1,0 +1,78 @@
+{% extends 'quiz_layout.html' %}
+{% block head %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename = 'question.js') }}"></script>
+<link rel="stylesheet" href="{{url_for('static', filename='question.css')}}">
+<script>
+    let item = {{item|tojson}};
+    let total = {{total|tojson}};
+    let n_questions={{n_questions|tojson}};
+</script>
+{% endblock head %}
+{% block content %}
+{{ super() }}
+<div class="row">
+    <div id="title" class="col-md-8 viewtitle">
+    </div>
+    <div id="progress" class="col-md-4">
+        <div id = "progressbar">
+            <div class="progress-label"></div> 
+        </div>
+    </div>   
+</div>
+
+<br>
+
+<div class="row">
+    <div id="image1" class="col-2.5 image3ing">
+    </div>
+    <div id="imageop1" class="col-1 operators3">
+    </div>
+    <div id="image2" class="col-2.5 image3ing">
+    </div>
+    <div id="imageop2" class="col-1 operators3">
+    </div>
+    <div id="image3" class="col-2.5 image3ing">
+    </div>
+    <div id="imageeq" class="col-1 operators3">
+    </div>
+    <div id="image4" class="col-2.5 image3ing">
+    </div>
+</div>
+
+<br>
+<br>
+
+<div id="title" class="col-md-11 viewoptions">
+    Options
+</div>
+
+<br>
+<br>
+
+<div id="optionimages" class="row">
+    <div id="op1" class="col-3 ui-widget-content">
+    </div>
+    <div id="op2" class="col-3 ui-widget-content">
+    </div>
+    <div id="op3" class="col-3 ui-widget-content">
+    </div>
+    <div id="op4" class="col-3 ui-widget-content">
+    </div>
+</div>
+
+<div class="row">
+    <div id="op1txt" class="col-3">
+    </div>
+    <div id="op2txt" class="col-3">
+    </div>
+    <div id="op3txt" class="col-3">
+    </div>
+    <div id="op4txt" class="col-3">
+    </div>
+</div>
+
+<div id= "nextq" class="col-4 bottombutton">
+</div>
+
+{% endblock content %}

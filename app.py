@@ -200,6 +200,44 @@ def main():
     else:
         return redirect("/question/0")
 
+@app.route('/question/<id>')
+@nocache
+def question(id=0):
+    global quiz_data
+    global c
+    question_id = id
+    question_data = quiz_data[question_id]
+    c = 1
+    if question_data["type"] == "2_ingredients":
+        return render_template(
+            'question.html',
+            item=question_data,
+            n_questions=number_of_questions,
+            total=len(quiz_data))
+    elif question_data["type"] == "3_ingredients":
+        return render_template(
+            'question_3.html',
+            item=question_data,
+            n_questions=number_of_questions,
+            total=len(quiz_data))
+    elif question_data["type"] == "fill_the_blanks":
+        return render_template(
+            'question_fill_the_gaps.html',
+            item=question_data,
+            n_questions=number_of_questions,
+            total=len(quiz_data))
+    elif question_data["type"] == "question_instructions":
+        return render_template(
+            'question_instructions.html',
+            item=question_data,
+            n_questions=number_of_questions,
+            total=len(quiz_data))
+    return render_template(
+        'question.html',
+        item=question_data,
+        n_questions=number_of_questions,
+        total=len(quiz_data))
+
 
 if __name__ == '__main__':
     app.run()

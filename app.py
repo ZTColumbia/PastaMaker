@@ -256,6 +256,18 @@ def store_answer():
     quiz_data[question_id] = item
     return jsonify(url="/quiz_home")
 
+@app.route('/end')
+@nocache
+def end():
+    global quiz_data
+    global question_wise
+    global c
+    global s
+    c = 0
+    s_temp = sum(question_wise.values())
+    s = 0
+    return render_template('quiz_end.html', s=s_temp, n_questions=number_of_questions, total=len(quiz_data))
+
 
 if __name__ == '__main__':
     app.run()

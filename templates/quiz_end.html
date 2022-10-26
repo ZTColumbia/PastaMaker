@@ -1,0 +1,93 @@
+{% extends 'quiz_layout.html' %}
+{% block head %}
+{{ super() }}
+<!-- <script type="text/javascript" src="{{ url_for('static', filename = 'quiz_end.js') }}"></script> -->
+<link rel="stylesheet" href="{{url_for('static', filename='question.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='quiz_end.css')}}">
+<script>
+    let s = {{ s| tojson}}
+    let total = {{ total| tojson}}
+    let n_questions = {{ n_questions| tojson}}
+    $(document).ready(function () {
+        let score = Math.round(100 * s / n_questions)
+        rotate_perc = 1.80 * score
+        $("#final_score").append("" + score + "%")
+        if (score < 50) {
+            $("#scoreText").append("You didn't do so well this time:( <br>You can always take the course again! <br>Your score:")
+            $("#chef_image").append("<div class='chef_image_wrapper'><img src='static/images/sad_chef.jpeg' class='chef_image_wrapper'></div>")
+        }
+        else if (score < 75) {
+            $("#scoreText").append("You are almost there! <br>Remember, you can always take the course again <br>Your score:")
+            $("#chef_image").append("<div class='chef_image_wrapper'><img src='static/images/neutral_chef.jpeg' class='chef_image_wrapper'></div>")
+        }
+        else {
+            $("#scoreText").append("Great job! <br>You are ready to start cooking pasta! <br>Your score:")
+            $("#chef_image").append("<div class='chef_image_wrapper'><img src='static/images/happy_chef.jpeg' class='chef_image_wrapper'></div>")
+        }
+        document.documentElement.style.setProperty('--my-end-width', rotate_perc + 'deg');
+        $("#displayscore").html("Your score is <b>" + score + "%<b>")
+    });
+</script>
+{% endblock head %}
+{% block content %}
+
+{{ super() }}
+<div class="container-fluid theme_css">
+
+    <div class="row addTopMargin">
+        <div class="col-md-6">
+            <div class="scoreTitle" id="scoreText">
+
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-2">
+            <div class="circle-wrap">
+                <div class="circle">
+                    <div class="mask half">
+                        <div class="fill"></div>
+                    </div>
+                    <div class="mask full">
+                        <div class="fill"></div>
+                    </div>
+                    <div class="inside-circle" id="final_score"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <br>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-5 align_right" id="chef_image">
+            
+        </div>
+        <div class="col-md-1">
+            <div class="buttonsArange">
+                <button type="button" class = "ButtonStyle"><a href="/quiz_home" style="color:#fff">
+                        <div class="button_message">
+                            Retake Quiz
+                        </div>
+                    </a>
+                </button>
+            </div>
+
+            <div class="buttonsArange">
+                <button type="button" class="ButtonStyle"><a href="/welcome" style="color:#fff">
+                    <div class="button_message">
+                    Back to Lessons
+                </div></a></button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <br>
+    <div class="row">
+
+    </div>
+</div>
+{% endblock content %}

@@ -28,10 +28,9 @@ function renderParent(e, id){
 
 }
 
-function renderChild(e, id){
+function createChild(e, id){
    e.preventDefault();
    callBackend('/init_tree', {'id' : id})
-
 }
 
 function goToQuiz(e){

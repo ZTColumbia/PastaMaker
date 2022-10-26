@@ -7,7 +7,6 @@
     <script>
         let parent = {{parent|tojson}};
         let child_middle = {{child_middle|tojson}};
-        let size = 1000;
     </script>
     <div class="branch">
         <div class="arrows-parent-div">
@@ -33,8 +32,9 @@
         {#    for child node, the middle one - child 2 with arrow 2   #}
         <div class="tree-node">
             <div class='tree_node_button'>
+                {#     create sub child nodes when click on button        #}
                 <button id="child-button-2" class='child-button' name="{{ child_middle['node_id'] }}"
-                        onclick=" renderChild(event, {{ child_middle['node_id'] }})">
+                        onclick=" createChild(event, {{ child_middle['node_id'] }})">
                     <div class="child-node-div">
                         <div class="child-node-text">
                             {{ child_middle['title'] }}

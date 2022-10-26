@@ -35,24 +35,24 @@ def init_tree():
 
 
 # global variables
-state_tracker = {
+nodes_info = {
     "nodes_visited": [],
     "current_node": 0
 }
 
 @app.route('/create_tree_node/<id>')
 def create_tree_node(id):
-    global state_tracker
+    global nodes_info
 
-    if id not in state_tracker['nodes_visited']:
-        state_tracker['nodes_visited'].append(id)
+    if id not in nodes_info['nodes_visited']:
+        nodes_info['nodes_visited'].append(id)
 
-    state_tracker['current_node'] = id
+    nodes_info['current_node'] = id
     parent = tree[id]
     children = parent['children']
 
-    allow_quiz = True
-    if len(state_tracker['nodes_visited']) == 26:
+    allow_quiz = False
+    if len(nodes_info['nodes_visited']) == 26:
         allow_quiz = True
 
     # render leaf node
@@ -76,8 +76,8 @@ def create_tree_node(id):
                                ingredient_images=ingredient_images,
                                recipe_text=recipe_text,
                                parent_id=parent['parent_id'],
-                               visited=state_tracker['nodes_visited'],
-                               present=state_tracker['current_node'],
+                               visited=nodes_info['nodes_visited'],
+                               present=nodes_info['current_node'],
                                tree=tree
                                )
 
@@ -87,12 +87,13 @@ def create_tree_node(id):
             children_data.append(tree[str(child_id)])
 
         # render new branch
+
         if len(children) == 1:
             return render_template('create_tree_node_1.html',
                                    parent=parent,
                                    child_middle=children_data[0],
-                                   visited=state_tracker['nodes_visited'],
-                                   present=state_tracker['current_node'],
+                                   visited=nodes_info['nodes_visited'],
+                                   present=nodes_info['current_node'],
                                    tree=tree,
                                    allow_quiz=allow_quiz
                                    )
@@ -102,11 +103,10 @@ def create_tree_node(id):
                                    parent=parent,
                                    child_left=children_data[0],
                                    child_right=children_data[1],
-                                   visited=state_tracker['nodes_visited'],
-                                   present=state_tracker['current_node'],
+                                   visited=nodes_info['nodes_visited'],
+                                   present=nodes_info['current_node'],
                                    tree=tree,
                                    allow_quiz=allow_quiz
-
                                    )
 
         elif len(children) == 3:
@@ -115,8 +115,8 @@ def create_tree_node(id):
                                    child_left=children_data[0],
                                    child_middle=children_data[1],
                                    child_right=children_data[2],
-                                   visited=state_tracker['nodes_visited'],
-                                   present=state_tracker['current_node'],
+                                   visited=nodes_info['nodes_visited'],
+                                   present=nodes_info['current_node'],
                                    tree=tree,
                                    allow_quiz=allow_quiz
                                    )
@@ -134,7 +134,7 @@ def load_recipe_page():
 
 @app.route('/recipe/<recipe_id>')
 def render_recipe(recipe_id):
-    global state_tracker
+    global nodes_info
 
     # update state dict
     recipe_name = tree[str(recipe_id)]['title']
@@ -154,8 +154,8 @@ def render_recipe(recipe_id):
                            ingredient_names=ingredient_names,
                            ingredient_images=ingredient_images,
                            recipe_text=recipe_text,
-                           visited=state_tracker['nodes_visited'],
-                           present=state_tracker['current_node'],
+                           visited=nodes_info['nodes_visited'],
+                           present=nodes_info['current_node'],
                            tree=tree
                            )
 

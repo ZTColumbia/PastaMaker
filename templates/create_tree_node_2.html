@@ -9,7 +9,6 @@
         let parent = {{parent|tojson}};
         let child_left = {{child_left|tojson}};
         let child_right = {{child_right|tojson}};
-        let size = 1000
     </script>
 
     <div class="branch">
@@ -38,7 +37,7 @@
         <div class="tree-node">
             <div class='tree_node_button'>
                 <button id="child-button-1" class='child-button' name="{{ child_left['node_id'] }}"
-                        onclick="renderChild(event, {{ child_left['node_id'] }})">
+                        onclick="createChild(event, {{ child_left['node_id'] }})">
                     <div class="child-node-div">
                         <div class="child-node-text">
                             {{ child_left['title'] }}
@@ -52,7 +51,7 @@
             </div>
             <div class='tree_node_button'>
                 <button id="child-button-3" class='child-button' name="{{ child_right['node_id'] }}"
-                        onclick="renderChild(event, {{ child_right['node_id'] }})">
+                        onclick="createChild(event, {{ child_right['node_id'] }})">
                     <div class="child-node-div">
                         <div class="child-node-text">
                             {{ child_right['title'] }}

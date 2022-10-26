@@ -27,38 +27,32 @@ with open('questions.json') as f:
     quiz_data = json.load(f)
 
 @app.route('/')
-def init():
-    return redirect(url_for('welcome'))
+def hello_world():
+    return redirect(url_for('homepage'))
 
+@app.route('/homepage')
+def homepage():
+    return render_template('homepage.html')
 
-@app.route('/welcome')
-def welcome():
-    return render_template('welcome.html')
+@app.route("/init_tree", methods=['GET', 'POST'])
+def init_tree():
+    data = request.get_json()
+    id = data['id']
+    return jsonify(dict(redirect=f'/populate_tree_branch/{id}'))
 
-@app.route("/traverse_tree", methods=['GET', 'POST'])
-def traverse_tree():
-    package = request.get_json()
-
-    id = package['id']
-
-    return jsonify(dict(redirect=f'/render_branch/{id}'))
-
-@app.route('/render_branch/<id>')
-def render_branch(id):
+@app.route('/populate_tree_branch/<id>')
+def populate_tree_branch(id):
     global state_tracker
 
     if id not in state_tracker['nodes_visited']:
         state_tracker['nodes_visited'].append(id)
 
     state_tracker['current_node'] = id
-
     parent = tree_structure[id]
     children = parent['children']
-
     allow_quiz = True
     if len(state_tracker['nodes_visited']) == 26:
         allow_quiz = True
-
     # render leaf node
     if parent['is_recipe']:
 
@@ -73,7 +67,7 @@ def render_branch(id):
             ingredient_names.append(tree_structure[str(item)]['title'])
             ingredient_images.append(tree_structure[str(item)]['image'])
 
-        return render_template('recipe_2.html',
+        return render_template('recipe.html',
                                recipe_name=recipe_name,
                                recipe_image=recipe_image,
                                ingredient_names=ingredient_names,
@@ -92,7 +86,7 @@ def render_branch(id):
 
         # render new branch
         if len(children) == 1:
-            return render_template('render_branch_1.html',
+            return render_template('populate_tree_branch_1.html',
                                    parent=parent,
                                    child_1=children_data[0],
                                    visited=state_tracker['nodes_visited'],
@@ -102,7 +96,7 @@ def render_branch(id):
                                    )
 
         elif len(children) == 2:
-            return render_template('render_branch_2.html',
+            return render_template('populate_tree_branch_2.html',
                                    parent=parent,
                                    child_1=children_data[0],
                                    child_2=children_data[1],
@@ -114,7 +108,7 @@ def render_branch(id):
                                    )
 
         elif len(children) == 3:
-            return render_template('render_branch_3.html',
+            return render_template('populate_tree_branch_3.html',
                                    parent=parent,
                                    child_1=children_data[0],
                                    child_2=children_data[1],

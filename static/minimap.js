@@ -136,7 +136,7 @@ function renderNode(id) {
 
     /* do nothing if root node */
     console.log('render node', id)
-    callBackend('/traverse_tree', { 'id': id })
+    callBackend('/init_tree', { 'id': id })
 
 }
 

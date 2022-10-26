@@ -64,7 +64,7 @@
 
 .highlight {
     cursor: all-scroll;
-    background-color: #fbe5b2;
+    background-color: #4AF29B;
 }
 
 .wronghighlight {
@@ -107,7 +107,7 @@
 }
 
 .enabled_yellow {
-    background-color: #de9e2f;
+    background-color: #007bff;
     color: white;
 }
 
@@ -166,11 +166,11 @@ position: relative;
 }
 
 .ui-progressbar {
-    background: #fbe5b2;
+    background: #4AF29B;
 }
 
 .ui-progressbar-value {
-    background: #de9e2f;
+    background: #007bff;
 }
 
 .theme_css{
@@ -180,14 +180,14 @@ position: relative;
     left: 0;
     margin-top: 0px;
     margin-bottom: 10px;
-    background-color: #fbe5b2;
+    background-color: #4AF29B;
 }
 
 .endbuttonleft {
     margin-left: 65%;
     display: block;
     font-size: 32px;
-    background-color: #de9e2f;
+    background-color: #007bff;
     color: white;
     width: 240px;
     height: 60px;
@@ -200,7 +200,7 @@ position: relative;
     margin-left: 15%;
     display: block;
     font-size: 32px;
-    background-color: #de9e2f;
+    background-color: #007bff;
     color: white;
     width: 240px;
     height: 60px;

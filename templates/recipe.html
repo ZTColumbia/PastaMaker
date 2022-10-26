@@ -9,11 +9,11 @@
 <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
 
 <script>
-	        let parent_id                = {{parent_id|tojson}}
-		    let ingredient_images        = {{ingredient_images|tojson}}
-	        let ingredient_names         = {{ingredient_names|tojson}}
-	        let recipe_name              = {{recipe_name|tojson}}
-	        let recipe_text              = {{recipe_text|tojson}}
+	        let parent_id                = {{parent_id|tojson}};
+		    let ingredient_images        = {{ingredient_images|tojson}};
+	        let ingredient_names         = {{ingredient_names|tojson}};
+	        let recipe_name              = {{recipe_name|tojson}};
+	        let recipe_text              = {{recipe_text|tojson}};
 </script>
 <div class="recipe-info">
 	<div class="recipe row">
@@ -28,6 +28,8 @@
 				<image src="{{url_for('static', filename='images/'+ image)}}"
 				       alt="olive oil" height="80" width="80">
 					{% endfor %}
+                </image>
+            </image>
 		</div>
 		<div class="recipe-col">
 			<div class='recipe-header'>

@@ -28,7 +28,7 @@
     margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
-    color: #de9e2f;
+    color: #007bff;
 }
 
 #tutorial{
@@ -67,17 +67,17 @@
 }
 
 .enabled_yellow {
-    background-color: #de9e2f;
+    background-color: #007bff;
     color: white;
 }
 
 .enabled_light_yellow {
-    background-color: #fbe5b2;
+    background-color: #4AF29B;
     color: black;
 }
 
 .hover{
-    background-color: #fbe5b2;
+    background-color: #4AF29B;
     cursor: all-scroll;
 }
 
@@ -87,7 +87,7 @@
 }
 
 .hover-active{
-    background-color: #fbe5b2;
+    background-color: #4AF29B;
 }
 
 #progress {
@@ -116,9 +116,9 @@
   }
 
 .ui-progressbar {
-    background: #fbe5b2;
+    background: #4AF29B;
 }
 
 .ui-progressbar-value {
-    background: #de9e2f;
+    background: #007bff;
 }

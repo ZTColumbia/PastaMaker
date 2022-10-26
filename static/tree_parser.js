@@ -1,7 +1,4 @@
-
-
 function callBackend(url, data_file){
-
     $.ajax({
             url : url,
             type: "POST",
@@ -12,7 +9,6 @@ function callBackend(url, data_file){
             contentType : "application/json; charset=utf-8",
             data : JSON.stringify(data_file),
             success: function(response) {
-                console.log(response)
                 if (response.redirect) {
                     window.location.href = response.redirect;
                   }
@@ -26,48 +22,33 @@ function callBackend(url, data_file){
         });
     }
 
-
 function renderParent(e, id){
    e.preventDefault();
-
-   callBackend('/traverse_tree', {'id' : id})
+   callBackend('/init_tree', {'id' : id})
 
 }
 
 function renderChild(e, id){
    e.preventDefault();
-
-   callBackend('/traverse_tree', {'id' : id})
+   callBackend('/init_tree', {'id' : id})
 
 }
 
 function goToQuiz(e){
    e.preventDefault();
-
    callBackend('/goto_quiz_home', {})
 
 }
 
-
-
 function initTree(e){
    e.preventDefault();
-
-
-   callBackend('/traverse_tree', {'id' : '0'})
+   callBackend('/init_tree', {'id' : '0'})
 }
 
 
-
-
 let color = 'color'
-
 function turnOn(value){
-
-
-
     color = document.getElementById(parseInt(value)).className
-
     document.getElementById(parseInt(value)).classList.remove(color);
     document.getElementById(parseInt(value)).classList.add('yellow');
 

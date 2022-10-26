@@ -5,7 +5,7 @@
     float: left;
     flex: 1;
     margin-left: 200px;
-    background-color: #fbe5b2
+    background-color: #4AF29B
 }
 
 .recipe-info {
@@ -27,7 +27,7 @@
 .igredients-col {
 
     height: 100%;
-    background-color: #de9e2f;
+    background-color: #007bff;
     width: 20%;
 }
 

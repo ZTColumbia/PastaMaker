@@ -1,7 +1,7 @@
 .expand-minimap-btn{
 
     font-size : 24px;
-    background : #fbe5b2;
+    background : #4AF29B;
     border:10px solid darkgray;
     border-style: outset;
 	font-weight: bold;
@@ -62,9 +62,9 @@
     padding: 30px;
     text-align: center;
     font-weight:bolder;
-    background-color: #fbe5b2;
+    background-color: #4AF29B;
     border-radius: 25px;
-    border: 4px solid #de9e2f;
+    border: 4px solid #007bff;
 }
 
 .ingredients-List-Item{
@@ -89,7 +89,7 @@ h1{
 
 h6{
 
-    color : #de9e2f;
+    color : #007bff;
     font-size : 50px;
 
 }
@@ -113,7 +113,7 @@ h7{
 
     width : 300px;
     height: 300px;
-    background-color : #de9e2f;
+    background-color : #007bff;
 box-shadow: 10px 10px #888888;
 
 }
@@ -122,7 +122,7 @@ box-shadow: 10px 10px #888888;
 
     width : 200px;
     height: 200px;
-    background-color : #fbe5b2;
+    background-color : #4AF29B;
 
 }
 
@@ -175,7 +175,7 @@ box-shadow: 10px 10px #888888;
     left: 0;
     margin-top: 0px;
     margin-bottom: 10px;
-    background-color: #fbe5b2;
+    background-color: #007bff;
 }
 
 .theme_background_image{
@@ -236,7 +236,7 @@ box-shadow: 10px 10px #888888;
 
 #start_button {
     font-size: 24px;
-    background-color: #de9e2f;
+    background-color: darkgray;
     color: white;
     width: 200px;
     height: 60px;

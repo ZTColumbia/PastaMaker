@@ -1,8 +1,8 @@
 
 /*
 
-    Dark Yellow : #de9e2f
-    Light Yellow : #fbe5b2
+    Dark Yellow : #007bff
+    Light Yellow : #4AF29B
 
     Dark Gray : darkgray
     Light Gray : #e8e6e0
@@ -18,7 +18,7 @@
     margin: 0;
     padding: 0;
     position: relative;
-    background-color : #fbe5b2;
+    background-color : #4AF29B;
     width : 40px;
 
 }
@@ -200,13 +200,13 @@
 
 .ui-draggable .ui-dialog-titlebar {
     cursor: move;
-    background-color: #de9e2f;
+    background-color: #007bff;
 }
 .ui-dialog .ui-dialog-content {
     position: relative;
-    border: 4px solid #de9e2f;;
+    border: 4px solid #007bff;;
     padding: 0.5em 1em;
     background: none;
     overflow: auto;
-    background-color: #fbe5b2;
+    background-color: #4AF29B;
 }

@@ -158,11 +158,6 @@ def render_recipe(recipe_id):
                            tree_structure=tree_structure
                            )
 
-s = 0
-c = 0
-question_wise = {}
-# -2 will be updated with the number of "questions" with instructions
-number_of_questions = len(quiz_data) - 2
 
 if __name__ == '__main__':
     app.run()

@@ -1,0 +1,54 @@
+{% extends "recipe_layout.html" %}
+{% block content %}
+
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<script type="text/javascript" src="{{ url_for('static', filename = 'tree_parser.js') }}"></script>
+<link rel="stylesheet" href="{{url_for('static', filename='recipe.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+
+<script>
+	        let parent_id                = {{parent_id|tojson}}
+		    let ingredient_images        = {{ingredient_images|tojson}}
+	        let ingredient_names         = {{ingredient_names|tojson}}
+	        let recipe_name              = {{recipe_name|tojson}}
+	        let recipe_text              = {{recipe_text|tojson}}
+</script>
+<div class="recipe-info">
+	<div class="recipe row">
+		<div class="igredients-col">
+			<h2></h2>
+			<h5 style="font-weight: bold;"> Dry Pasta </h5>
+			<image src="{{url_for('static', filename='images/dry_pasta.jpeg')}}"
+			       alt="olive oil" height="80" width="80">
+				{% for image in ingredient_images %}
+				<div class='igredients-list'></div>
+				<h5 style="font-weight: bold;">{{ingredient_names[loop.index-1]}}</h5>
+				<image src="{{url_for('static', filename='images/'+ image)}}"
+				       alt="olive oil" height="80" width="80">
+					{% endfor %}
+		</div>
+		<div class="recipe-col">
+			<div class='recipe-header'>
+				<h3> {{recipe_name}} </h3>
+			</div>
+			<div class="recipe-description">
+				<ul>
+					{% for text in recipe_text %}
+					<p style="font-size:18px;   text-align: left; width:80%"> <span style="font-weight : bold"> step {{loop.index}}) </span> {{text}} </p>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		<button class="learn-more" onclick="renderParent(event, {{parent_id}})">
+			  <span class="circle" aria-hidden="true">
+			  <span class="icon arrow"></span>
+			  </span>
+			<span class="button-text">Back to Tree</span>
+		</button>
+	</div>
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="data:,">
+	
+	<!-- jquery -->
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	<script type="text/javascript" src="{{ url_for('static', filename = 'minimap.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename = 'basket.js') }}"></script>
+	
+	<link rel="stylesheet" href="{{url_for('static', filename='minimap.css')}}">
+	<link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+	
+	<script>
+        var visited = {{visited|tojson}};
+        var present = {{present|tojson}};
+        var tree_structure = {{tree_structure|tojson}};
+        var allow_quiz = {{allow_quiz|tojson}};
+        
+	
+	</script>
+	
+	<title>Mini Map</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #de9e2f">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="/">
+			Home
+		</a>
+		
+		{% if allow_quiz %}
+		
+		<a class="navbar-brand" href="/quiz_home">
+			Quiz
+		</a>
+		{% endif %}
+	</div>
+</nav>
+<div class="container">
+	
+	
+	<div>
+		
+		<div id="minimap">
+		
+		
+		</div>
+		
+		
+		<div>
+			<button class="expand-minimap-btn" name="basketButton" onclick="expandMiniMap()">
+				Expand Mini Map
+			</button>
+		</div>
+		
+		
+		<div class="quiz-button-div">
+			
+			{% if allow_quiz %}
+			
+			<button onclick="goToQuiz(event)" class= "quiz-button btn  btn-success"> GOTO QUIZ</button>
+			
+			{% endif %}
+			
+		</div>
+	
+	</div>
+	
+	<dialog id="expandMiniMapDialog">
+					<h7> Try clicking on a visited node! </h7>
+
+		<div class="containerExpand" id="minimapDialog">
+		
+		</div>
+	</dialog>
+	
+	
+	{% block content %}
+	{% endblock %}
+</div>
+
+</body>
+</html>
+
+
+
+

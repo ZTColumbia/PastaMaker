@@ -1,0 +1,174 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<script type="text/javascript" src="{{ url_for('static', filename = 'tree_parser.js') }}"></script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='/main.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='/arrows.css') }}">
+
+<script>
+
+        let parent        = {{parent|tojson}}
+        let child_1       = {{child_1|tojson}}
+        let child_2       = {{child_2|tojson}}
+        let child_3       = {{child_3|tojson}}
+
+
+</script>
+
+
+<div class="branch">
+	
+	
+	<!-- Arrows -->
+	<div class="arrows-parent-div">
+		
+		{% if parent['title'] == 'Olive Oil' %}
+		
+		<h6> Welcome to the <span style="    font-weight : bold;"> Tree of Pasta </span> </h6>
+		<h7> Add ingredients to your basket, and discover amazing recipes!</h7>
+
+		{% else %}
+		<div class="arrow-button" id="arrow-parent"></div>
+		
+		{% endif %}
+	</div>
+	
+	
+	<div class="tree-root">
+		
+		<div class='parent-node'>
+			
+			<button class="parent-button" id="parent-button-1" name={{parent['parent_id']}}"
+			        onclick="renderParent(event, {{parent['parent_id']}})">
+				
+				<div class='parent-node-text'>
+					{{parent['title']}}
+				</div>
+				
+				<div class='parent-node-image'>
+					<image src="{{url_for('static', filename='images/'+ parent['image'])}}"
+					       alt="olive oil" height="100" width="100">
+				
+				</div>
+			
+			</button>
+		
+		</div>
+	
+	</div>
+	
+	
+	<!-- Arrows -->
+	<div class="arrows">
+		
+		<div class="arrow-button" id="arrow-1"></div>
+		<div class="arrow-button" id="arrow-2"></div>
+		<div class="arrow-button" id="arrow-3"></div>
+	
+	</div>
+	
+	
+	<div class="tree-node">
+		
+		<div class='tree_node_button'>
+			
+			
+			<button id="child-button-1" class='child-button' name={{child_1['node_id']}}"
+			        onclick="renderChild(event, {{child_1['node_id']}})">
+				
+				<div class="child-node-div">
+					
+					<div class="child-node-text">
+						
+						{{child_1['title']}}
+					
+					</div>
+					
+					<div class="child-node-image">
+						
+						<image src="{{url_for('static', filename='images/'+ child_1['image'])}}"
+						       alt="olive oil" height="180" width="220">
+					
+					</div>
+				
+				</div>
+			
+			</button>
+		</div>
+		
+		<div class='tree_node_button'>
+			
+			
+			<button id="child-button-2" class='child-button' name={{child_2['node_id']}}"
+			        onclick="renderChild(event, {{child_2['node_id']}})">
+				
+				<div class="child-node-div">
+					
+					<div class="child-node-text">
+						
+						{{child_2['title']}}
+					
+					</div>
+					
+					<div class="child-node-image">
+						
+						<image src="{{url_for('static', filename='images/'+ child_2['image'])}}"
+						       alt="olive oil" height="180" width="220">
+					
+					</div>
+				
+				</div>
+			
+			</button>
+		</div>
+		
+		
+		<div class='tree_node_button'>
+			
+			
+			<button id="child-button-3" class='child-button' name={{child_3['node_id']}}"
+			        onclick="renderChild(event, {{child_3['node_id']}})">
+				
+				<div class="child-node-div">
+					
+					<div class="child-node-text">
+						
+						{{child_3['title']}}
+					
+					</div>
+					
+					<div class="child-node-image">
+						
+						<image src="{{url_for('static', filename='images/'+ child_3['image'])}}"
+						       alt="olive oil" height="180" width="220">
+					
+					</div>
+				
+				</div>
+			
+			</button>
+		</div>
+	
+	
+	</div>
+
+</div>
+
+
+<div class="shopping-cart" id="basket">
+	
+	<div id="ingredients" class="ingredientsCSS">
+	
+	</div>
+</div>
+
+</div>
+</div>
+
+
+</div>
+
+
+{% endblock %}
+

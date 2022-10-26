@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<script type="text/javascript" src="{{ url_for('static', filename = 'tree_parser.js') }}"></script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='/main.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='/arrows.css') }}">
+
+<script>
+
+        let parent        = {{parent|tojson}}
+        let child_1       = {{child_1|tojson}}
+
+        
+        console.log('images/' + parent['image'])
+        
+        let size = 1000
+
+
+
+</script>
+
+<div class="branch">
+	
+	
+	<!-- Arrows -->
+	<div class="arrows-parent-div">
+		
+		<div class="arrow-button" id="arrow-parent"></div>
+	
+	
+	</div>
+	
+	<div class="tree-root">
+		
+		<div class='parent-node'>
+			
+			<button class="parent-button" id="parent-button-1" name={{parent['parent_id']}}"
+			        onclick="renderParent(event, {{parent['parent_id']}})">
+				
+				<div class='parent-node-text'>
+					{{parent['title']}}
+				</div>
+				
+				<div class='parent-node-image'>
+					<image src="{{url_for('static', filename='images/'+ parent['image'])}}"
+					       alt="olive oil" height="100" width="100">
+				
+				</div>
+			
+			</button>
+		
+		</div>
+	
+	</div>
+	
+	
+	<!-- Arrows -->
+	<div class="arrows">
+		
+		<div class="arrow-button" id="arrow-2"></div>
+	
+	</div>
+	
+	
+	<div class="tree-node">
+		
+		<div class='tree_node_button'>
+			
+			
+			<button id="child-button-2" class='child-button' name={{child_1['node_id']}}"
+			        onclick="renderChild(event, {{child_1['node_id']}})">
+				
+				<div class="child-node-div">
+					
+					<div class="child-node-text">
+						
+						{{child_1['title']}}
+					
+					</div>
+					
+					<div class="child-node-image">
+						
+						<image src="{{url_for('static', filename='images/'+ child_1['image'])}}"
+						       alt="olive oil" height="180" width="220">
+					
+					</div>
+				
+				</div>
+			
+			</button>
+		</div>
+	
+	
+	</div>
+
+
+</div>
+
+<div class="shopping-cart" id="basket">
+	
+	<div id="ingredients" class="ingredientsCSS">
+	
+	</div>
+</div>
+
+
+</div>
+
+
+{% endblock %}
+

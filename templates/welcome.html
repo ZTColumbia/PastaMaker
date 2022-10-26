@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="data:,">
+	
+	<!-- jquery -->
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	<script type="text/javascript" src="{{ url_for('static', filename = 'tree_parser.js') }}"></script>
+	<link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+	
+	<title>PastaMaker</title>
+</head>
+<body>
+	<div class="container-fluid theme_css">
+		<div class="row">
+			<div
+				class="theme_background_image"
+				style="background: url('../static/images/home_page.jpeg'); background-repeat: no-repeat; background-size: cover;"
+				>
+				<div class="col-md-5">
+					<div id="theme-title">Make Pasta By Yourself</div>
+					<div id="theme-description">Through the ingredients tree, discover new recipes and quiz your knowledge and you will learn everything about pasta!</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-5 learn">
+				<button type='button' id='start_button' class='start_button' onclick="initTree(event)">Start Learning</button>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

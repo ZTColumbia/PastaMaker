@@ -1,5 +1,5 @@
 .arrows {
-    height : 350px;
+    height : 300px;
 }
 
 .arrows-parent-div {
@@ -17,14 +17,14 @@
 #arrow-3{
   transform: rotate(45deg);
   position: absolute;
-  top: 700px;
+  top: 510px;
   left: 1000px;
 }
 
 #arrow-2{
   transform: rotate(90deg);
   position: absolute;
-  top: 670px;
+  top: 480px;
   left: 700px;
   height: 60px;
   width: 280px;
@@ -33,28 +33,28 @@
 #arrow-1{
   transform: rotate(135deg);
   position: absolute;
-  top: 700px;
+  top: 510px;
   left: 400px;
 }
 
 #arrow-3-2col{
   transform: rotate(65deg);
   position: absolute;
-  top: 670px;
+  top: 490px;
   left: 870px;
 }
 
 #arrow-1-2col{
   transform: rotate(115deg);
   position: absolute;
-  top: 670px;
+  top: 490px;
   left: 550px;
 }
 
 #arrow-parent{
   transform: rotate(270deg);
   position: absolute;
-  top: 250px;
+  top: 120px;
   left: 700px;
 }
 

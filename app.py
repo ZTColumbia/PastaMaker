@@ -113,13 +113,6 @@ def render_recipe(recipe_id):
     parent['parent_id'] = 0
     return render_recipe_helper(recipe_id, 'recipe_for_quiz.html', False, parent)
 
-
-s = 0
-c = 0
-question_wise = {}
-# -2 will be updated with the number of "questions" with instructions
-number_of_questions = len(quiz_data) - 2
-
 def nocache(view):
     @wraps(view)
     def no_cache(*args, **kwargs):
@@ -131,10 +124,14 @@ def nocache(view):
         return response
     return update_wrapper(no_cache, view)
 
+flag = 0
+question_wise = {}
+# -2 will be updated with the number of "questions" with instructions
+number_of_questions = len(quiz_data) - 2
 @app.route('/quiz_home')
 @nocache
 def main():
-    global c
+    global flag
     global question_wise
     global quiz_data
     # reset the selections when quiz is done
@@ -142,7 +139,7 @@ def main():
         if "selected" in quiz_data[str(i)]:
             quiz_data[str(i)]["selected"] = -1
     question_wise = {}
-    if c == 0:
+    if flag == 0:
         return render_template('quiz_home.html', data=quiz_data)
     else:
         return redirect("/question/0")
@@ -151,45 +148,32 @@ def main():
 @nocache
 def question(id=0):
     global quiz_data
-    global c
+    global flag
     question_id = id
     question_data = quiz_data[question_id]
-    c = 1
+    flag = 1
+    tmp = 'question.html'
     if question_data["type"] == "2_ingredients":
-        return render_template(
-            'question.html',
-            item=question_data,
-            n_questions=number_of_questions,
-            total=len(quiz_data))
+        tmp = 'question.html'
     elif question_data["type"] == "3_ingredients":
-        return render_template(
-            'question_3.html',
-            item=question_data,
-            n_questions=number_of_questions,
-            total=len(quiz_data))
+        tmp = 'question_3.html'
     elif question_data["type"] == "fill_the_blanks":
-        return render_template(
-            'question_fill_the_gaps.html',
-            item=question_data,
-            n_questions=number_of_questions,
-            total=len(quiz_data))
+        tmp = 'question_fill_the_gaps.html'
     elif question_data["type"] == "question_instructions":
-        return render_template(
-            'question_instructions.html',
-            item=question_data,
-            n_questions=number_of_questions,
-            total=len(quiz_data))
+        tmp = 'question_instructions.html'
+
     return render_template(
-        'question.html',
+        tmp,
         item=question_data,
         n_questions=number_of_questions,
         total=len(quiz_data))
 
+score = 0
 @app.route('/question/update_score', methods=['GET', 'POST'])
 def update_score():
-    global s
+    global score
     num = request.get_json()
-    s += float(num["correct"])
+    score += float(num["correct"])
     if num["id"] not in question_wise:
         question_wise[num["id"]] = float(num["correct"])
     print(question_wise)
@@ -208,12 +192,12 @@ def store_answer():
 def end():
     global quiz_data
     global question_wise
-    global c
-    global s
-    c = 0
-    s_temp = sum(question_wise.values())
-    s = 0
-    return render_template('quiz_end.html', s=s_temp, n_questions=number_of_questions, total=len(quiz_data))
+    global flag
+    global score
+    flag = 0
+    score_tmp = sum(question_wise.values())
+    score = 0
+    return render_template('quiz_end.html', s=score_tmp, n_questions=number_of_questions, total=len(quiz_data))
 
 
 if __name__ == '__main__':

@@ -5,9 +5,9 @@
 <link rel="stylesheet" href="{{url_for('static', filename='question.css')}}">
 <link rel="stylesheet" href="{{url_for('static', filename='quiz_end.css')}}">
 <script>
-    let s = {{ s| tojson}}
-    let total = {{ total| tojson}}
-    let n_questions = {{ n_questions| tojson}}
+    let s = {{ s| tojson}};
+    let total = {{ total| tojson}};
+    let n_questions = {{ n_questions| tojson}};
     $(document).ready(function () {
         let score = Math.round(100 * s / n_questions)
         rotate_perc = 1.80 * score
@@ -81,13 +81,8 @@
 
         </div>
     </div>
-
-
-
-
     <br>
     <div class="row">
-
     </div>
 </div>
 {% endblock content %}

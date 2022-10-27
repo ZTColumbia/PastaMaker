@@ -18,7 +18,8 @@
         var visited = {{visited|tojson}};
         var present = {{present|tojson}};
         var tree = {{tree|tojson}};
-        let recipe_image             = {{recipe_image|tojson}}
+        let recipe_image = {{recipe_image|tojson}};
+        var allow_quiz = {{allow_quiz|tojson}};
 
     
 	</script>
@@ -26,6 +27,23 @@
 	<title>Mini Map</title>
 </head>
 <body>
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #007bff">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="/">
+			Home
+		</a>
+
+		{% if allow_quiz %}
+
+		<a class="navbar-brand" href="/quiz_home">
+			Go To Quiz
+		</a>
+		{% endif %}
+	</div>
+</nav>
+
+
 <div class="container">
 	
 	<div class="shrink" id="shrinkMe">
@@ -36,7 +54,7 @@
 		
 		<image style="border:12px solid #282936; margin-top : 40px;"
 		       src="{{url_for('static', filename='images/'+ recipe_image)}}"
-		       alt="olive oil" height="450" width="450">
+               alt="olive oil" height="450" width="450"></image>
 	</div>
 	
 	

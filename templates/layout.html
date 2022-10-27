@@ -22,9 +22,7 @@
         var visited = {{visited|tojson}};
         var present = {{present|tojson}};
         var tree = {{tree|tojson}};
-        var allow_quiz = {{allow_quiz|tojson}};
-        
-	
+
 	</script>
 	
 	<title>Mini Map</title>
@@ -36,54 +34,24 @@
 		<a class="navbar-brand" href="/">
 			Home
 		</a>
-		
-		{% if allow_quiz %}
-		
-		<a class="navbar-brand" href="/quiz_home">
-			Quiz
-		</a>
-		{% endif %}
 	</div>
 </nav>
+
 <div class="container">
-	
-	
 	<div>
-		
 		<div id="minimap">
-		
-		
 		</div>
-		
-		
 		<div>
 			<button class="expand-minimap-btn" name="basketButton" onclick="expandMiniMap()">
 				Expand Mini Map
 			</button>
 		</div>
-		
-		
-		<div class="quiz-button-div">
-			
-			{% if allow_quiz %}
-			
-			<button onclick="goToQuiz(event)" class= "quiz-button btn  btn-success"> GOTO QUIZ</button>
-			
-			{% endif %}
-			
-		</div>
-	
 	</div>
-	
 	<dialog id="expandMiniMapDialog">
 					<h7> Try clicking on a visited node! </h7>
-
 		<div class="containerExpand" id="minimapDialog">
-		
 		</div>
 	</dialog>
-	
-	
 	{% block content %}
 	{% endblock %}
 </div>

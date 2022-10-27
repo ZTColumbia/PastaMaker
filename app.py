@@ -52,11 +52,8 @@ def create_tree_node(id):
     children = parent['children']
 
     allow_quiz = False
-    if len(nodes_info['visited']) == 26:
-        allow_quiz = True
-
-    # is leaf node
     if parent['is_recipe']:
+        allow_quiz = True
 
         recipe_name = tree[str(id)]['title']
         recipe_image = tree[str(id)]['image']
@@ -78,7 +75,8 @@ def create_tree_node(id):
                                parent_id=parent['parent_id'],
                                visited=nodes_info['visited'],
                                present=nodes_info['cur'],
-                               tree=tree
+                               tree=tree,
+                               allow_quiz=allow_quiz
                                )
 
     else:
@@ -100,8 +98,7 @@ def create_tree_node(id):
                    children=children_data,
                    visited=nodes_info['visited'],
                    present=nodes_info['cur'],
-                   tree=tree,
-                   allow_quiz=allow_quiz
+                   tree=tree
                    )
 
 

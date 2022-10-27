@@ -34,6 +34,35 @@ def init_tree():
     return jsonify(dict(redirect=f'/create_tree_node/{id}'))
 
 
+def render_recipe_helper(recipe_id, tmp, allow_quiz, parent):
+    global nodes_info
+
+    # update
+    recipe_name = tree[str(recipe_id)]['title']
+    recipe_image = tree[str(recipe_id)]['image']
+    recipe_text = recipe[str(recipe_id)]['text']
+
+    ingredient_names = []
+    ingredient_images = []
+
+    for item in recipe[str(recipe_id)]['igredients']:
+        ingredient_names.append(tree[str(item)]['title'])
+        ingredient_images.append(tree[str(item)]['image'])
+
+    return render_template(tmp,
+                           recipe_name=recipe_name,
+                           recipe_image=recipe_image,
+                           ingredient_names=ingredient_names,
+                           ingredient_images=ingredient_images,
+                           recipe_text=recipe_text,
+                           parent_id=parent['parent_id'],
+                           visited=nodes_info['visited'],
+                           present=nodes_info['cur'],
+                           tree=tree,
+                           allow_quiz=allow_quiz
+                           )
+
+
 # global variables
 nodes_info = {
     "visited": [],
@@ -51,33 +80,8 @@ def create_tree_node(id):
     parent = tree[id]
     children = parent['children']
 
-    allow_quiz = False
     if parent['is_recipe']:
-        allow_quiz = True
-
-        recipe_name = tree[str(id)]['title']
-        recipe_image = tree[str(id)]['image']
-        recipe_text = recipe[str(id)]['text']
-
-        ingredient_names = []
-        ingredient_images = []
-
-        for item in recipe[str(id)]['igredients']:
-            ingredient_names.append(tree[str(item)]['title'])
-            ingredient_images.append(tree[str(item)]['image'])
-
-        return render_template('recipe.html',
-                               recipe_name=recipe_name,
-                               recipe_image=recipe_image,
-                               ingredient_names=ingredient_names,
-                               ingredient_images=ingredient_images,
-                               recipe_text=recipe_text,
-                               parent_id=parent['parent_id'],
-                               visited=nodes_info['visited'],
-                               present=nodes_info['cur'],
-                               tree=tree,
-                               allow_quiz=allow_quiz
-                               )
+        return render_recipe_helper(id, 'recipe.html', True, parent)
 
     else:
         children_data = []
@@ -103,41 +107,12 @@ def create_tree_node(id):
 
 
 ############### Quiz ##################
-@app.route("/load_recipe_page", methods=['GET', 'POST'])
-def load_recipe_page():
-    package = request.get_json()
-
-    recipe_id = package['recipe_id']
-    question_id = package['question_id']
-
-    return jsonify(dict(redirect=f'/render_recipe/{recipe_id}'))
-
 @app.route('/recipe/<recipe_id>')
 def render_recipe(recipe_id):
-    global nodes_info
+    parent = dict()
+    parent['parent_id'] = 0
+    return render_recipe_helper(recipe_id, 'recipe_for_quiz.html', False, parent)
 
-    # update state dict
-    recipe_name = tree[str(recipe_id)]['title']
-    recipe_image = tree[str(recipe_id)]['image']
-    recipe_text = recipe[str(recipe_id)]['text']
-
-    ingredient_names = []
-    ingredient_images = []
-
-    for item in recipe[str(recipe_id)]['igredients']:
-        ingredient_names.append(tree[str(item)]['title'])
-        ingredient_images.append(tree[str(item)]['image'])
-
-    return render_template('recipe_for_quiz.html',
-                           recipe_name=recipe_name,
-                           recipe_image=recipe_image,
-                           ingredient_names=ingredient_names,
-                           ingredient_images=ingredient_images,
-                           recipe_text=recipe_text,
-                           visited=nodes_info['visited'],
-                           present=nodes_info['cur'],
-                           tree=tree
-                           )
 
 s = 0
 c = 0
@@ -155,10 +130,6 @@ def nocache(view):
         response.headers['Expires'] = '-1'
         return response
     return update_wrapper(no_cache, view)
-
-@app.route("/goto_quiz_home", methods=['GET', 'POST'])
-def goto_quiz_home():
-    return jsonify(dict(redirect=f'/quiz_home'))
 
 @app.route('/quiz_home')
 @nocache

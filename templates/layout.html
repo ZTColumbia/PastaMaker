@@ -13,7 +13,7 @@
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 	<script type="text/javascript" src="{{ url_for('static', filename = 'minimap.js') }}"></script>
-	<script type="text/javascript" src="{{ url_for('static', filename = 'basket.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename = 'choices.js') }}"></script>
 	
 	<link rel="stylesheet" href="{{url_for('static', filename='minimap.css')}}">
 	<link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
@@ -29,20 +29,12 @@
 </head>
 <body>
 
-{#<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #007bff">#}
-{#	<div class="container-fluid">#}
-{#		<a class="navbar-brand" href="/">#}
-{#			Home#}
-{#		</a>#}
-{#	</div>#}
-{#</nav>#}
-
 <div class="container">
 	<div>
 		<div id="minimap">
 		</div>
 		<div>
-			<button class="expand-minimap-btn" name="basketButton" onclick="expandMiniMap()">
+			<button class="expand-minimap-btn" name="ChoicesButton" onclick="expandMiniMap()">
 				Expand Mini Map
 			</button>
 		</div>

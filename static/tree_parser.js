@@ -33,12 +33,6 @@ function createChild(e, id){
    callBackend('/init_tree', {'id' : id})
 }
 
-function goToQuiz(e){
-   e.preventDefault();
-   callBackend('/goto_quiz_home', {})
-
-}
-
 function initTree(e){
    e.preventDefault();
    callBackend('/init_tree', {'id' : '0'})

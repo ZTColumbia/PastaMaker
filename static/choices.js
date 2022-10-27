@@ -13,14 +13,14 @@ function fillIngredients(obj, idx) {
 		"<hr>";
 	return str;
 }
-function fillBasket() {
+function fillChoices() {
 	obj = $("#ingredients");
 	obj.empty();
-	obj.append("<h3>Your Basket</h3>");
+	obj.append("<h3>Your Choices</h3>");
 	obj.append("<hr>");
 	str = fillIngredients(obj, present);
 	obj.append(str);
 }
 $(document).ready(function () {
-	fillBasket();
+	fillChoices();
 });

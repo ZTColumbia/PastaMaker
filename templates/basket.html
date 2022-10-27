@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-	<script type="text/javascript" src="{{ url_for('static', filename = 'basket.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename = 'Choices.js') }}"></script>
 	<script>
         var present = {{present|tojson}};
         var tree = {{tree|tojson}}
@@ -20,15 +20,15 @@
     
 	</script>
 	
-	<title>Basket</title>
+	<title>Choices</title>
 </head>
 <body>
 
 
-<div class="basket" id="basket">
-	<button name="basketButton" onclick="fillBasket()">
+<div class="Choices" id="Choices">
+	<button name="ChoicesButton" onclick="fillChoices()">
 		
-		<image src="{{url_for('static', filename='images/basket.jpeg')}}"
+		<image src="{{url_for('static', filename='images/Choices.jpeg')}}"
 		       alt="olive oil" height="100%" width="100%">
 	
 	</button>

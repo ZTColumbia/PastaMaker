@@ -205,7 +205,6 @@ $(document).ready(function(){
     }
     showresetbutton()
     showsubmitbutton()
-    console.log(100*parseInt(item["id"])/total)
     $("#title").append(item["title"]);
     $("#question").append("<p>Fill in the steps for making " + "<strong>" + item["recipe_name"] + "</strong></p>");
     $( "#progressbar" ).progressbar({

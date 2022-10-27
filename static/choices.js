@@ -1,5 +1,4 @@
 function fillIngredients(obj, idx) {
-	console.log(idx);
 	if (idx == null) {
 		return "";
 	}

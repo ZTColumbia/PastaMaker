@@ -130,7 +130,6 @@ $(document).ready(function(){
             $("#option"+value).click(function(){
                 item["selected"] = index
                 send_answer(item)
-                console.log(item["selected"])
                 if (item["correct"] == index){
                     $("#op"+value+"txt").addClass("correct").html("Correct Answer<br>")
                     is_correct["correct"] = 1
@@ -164,7 +163,6 @@ $(document).ready(function(){
     else{
         let index = item["selected"]
         let value = index + 1
-        console.log(item["selected"])
         if (item["correct"] == index){
             $("#op"+value+"txt").addClass("correct").html("Correct Answer<br>")
             is_correct["correct"] = 0

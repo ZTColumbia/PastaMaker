@@ -26,7 +26,6 @@ function add_gif(url){
 
 $(document).ready(function(){
     $("#gif").html("<img src='../static/images/" + item["gif_link"] + "' width='180%'/>")
-    console.log("h")
     let part = Number(item["id"] != 0) + 1
     $("#title").append(item["title"]);
     $("#howtocomplete").append("Instructions to answer Part "+part)

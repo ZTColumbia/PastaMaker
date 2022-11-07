@@ -20,7 +20,7 @@ function callBackend(url, data_file){
                 console.log(error);
             }
         });
-    }
+}
 
 function renderParent(e, id){
    e.preventDefault();

@@ -63,12 +63,5 @@ function renderNode(id) {
 }
 
 $(document).ready(function () {
-    $("#expandMiniMapDialog").dialog({
-        autoOpen: false,
-        resizable: false,
-        height: 'auto',
-        width: 'auto',
-        modal: true
-    });
     displayChart(visited, present, tree, $("#minimap"))
 });
